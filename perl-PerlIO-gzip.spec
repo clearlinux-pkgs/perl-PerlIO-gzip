@@ -4,13 +4,13 @@
 #
 Name     : perl-PerlIO-gzip
 Version  : 0.20
-Release  : 10
+Release  : 11
 URL      : https://cpan.metacpan.org/authors/id/N/NW/NWCLARK/PerlIO-gzip-0.20.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/N/NW/NWCLARK/PerlIO-gzip-0.20.tar.gz
 Summary  : 'Perl extension to provide a PerlIO layer to gzip/gunzip'
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
-Requires: perl-PerlIO-gzip-lib = %{version}-%{release}
+Requires: perl-PerlIO-gzip-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : pkgconfig(zlib)
 BuildRequires : zlib-dev
@@ -24,29 +24,31 @@ A layer for the PerlIO system to transparently gzip/gunzip files.
 %package dev
 Summary: dev components for the perl-PerlIO-gzip package.
 Group: Development
-Requires: perl-PerlIO-gzip-lib = %{version}-%{release}
 Provides: perl-PerlIO-gzip-devel = %{version}-%{release}
+Requires: perl-PerlIO-gzip = %{version}-%{release}
 
 %description dev
 dev components for the perl-PerlIO-gzip package.
 
 
-%package lib
-Summary: lib components for the perl-PerlIO-gzip package.
-Group: Libraries
+%package perl
+Summary: perl components for the perl-PerlIO-gzip package.
+Group: Default
+Requires: perl-PerlIO-gzip = %{version}-%{release}
 
-%description lib
-lib components for the perl-PerlIO-gzip package.
+%description perl
+perl components for the perl-PerlIO-gzip package.
 
 
 %prep
 %setup -q -n PerlIO-gzip-0.20
+cd %{_builddir}/PerlIO-gzip-0.20
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -56,7 +58,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -76,12 +78,12 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/PerlIO/gzip.pm
 
 %files dev
 %defattr(-,root,root,-)
 /usr/share/man/man3/PerlIO::gzip.3
 
-%files lib
+%files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/auto/PerlIO/gzip/gzip.so
+/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/PerlIO/gzip.pm
+/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/auto/PerlIO/gzip/gzip.so
