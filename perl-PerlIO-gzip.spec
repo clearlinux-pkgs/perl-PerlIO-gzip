@@ -4,7 +4,7 @@
 #
 Name     : perl-PerlIO-gzip
 Version  : 0.20
-Release  : 12
+Release  : 13
 URL      : https://cpan.metacpan.org/authors/id/N/NW/NWCLARK/PerlIO-gzip-0.20.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/N/NW/NWCLARK/PerlIO-gzip-0.20.tar.gz
 Summary  : 'Perl extension to provide a PerlIO layer to gzip/gunzip'
@@ -85,5 +85,5 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.2/x86_64-linux-thread-multi/PerlIO/gzip.pm
-/usr/lib/perl5/vendor_perl/5.30.2/x86_64-linux-thread-multi/auto/PerlIO/gzip/gzip.so
+/usr/lib/perl5/vendor_perl/5.30.3/x86_64-linux-thread-multi/PerlIO/gzip.pm
+/usr/lib/perl5/vendor_perl/5.30.3/x86_64-linux-thread-multi/auto/PerlIO/gzip/gzip.so
