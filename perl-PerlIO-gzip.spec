@@ -7,7 +7,7 @@
 #
 Name     : perl-PerlIO-gzip
 Version  : 0.20
-Release  : 28
+Release  : 29
 URL      : https://cpan.metacpan.org/authors/id/N/NW/NWCLARK/PerlIO-gzip-0.20.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/N/NW/NWCLARK/PerlIO-gzip-0.20.tar.gz
 Summary  : 'Perl extension to provide a PerlIO layer to gzip/gunzip'
